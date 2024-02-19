@@ -1,14 +1,12 @@
 import './App.css';
 import './Screens/Log';
-import All from './Screens/Allthings';
-import Allthings from './Screens/Allthings';
-
+import Signup from './Screens/Signup'
 
 
 function App() {
   return (
     <div className="App">
-      <Allthings></Allthings>
+      <Signup/>
 
     </div>
   );
