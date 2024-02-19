@@ -1,0 +1,138 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  
+.logincontainer{
+    width:100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:20px;  
+    margin-top: 10px;
+}
+ 
+.logimg{
+  width:600px;
+  height:700px;
+  position: relative;
+  top:90px;
+  bottom: 0px;
+}
+  /* Full-width input fields */
+  input[type="text"],
+  input[type="password"],input[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    border-radius:20px;
+    box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  }
+  
+  input[type="text"]:focus,
+  input[type="password"]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  
+  hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+  }
+  
+  /* Set a style for all buttons */
+  button {
+    background-color: #2a35d8;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 20px;
+    opacity: 0.9;
+  }
+  
+  button:hover {
+    opacity: 1;
+  }
+  
+  .container {
+    padding: 10px;
+    width: 500px;
+  }
+  
+  .containerss{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    bottom: 0px;
+
+  }
+  label{
+    float: left;
+  }
+  form{
+    top:0;
+  }
+  
+  .Symbols img{
+      width:40px;
+      margin-left: 20px;
+      height:30px;
+      border-radius: 50%;
+  }
+  
+
+  
+@media(max-width:975px) {
+  .logincontainer{
+      height: auto;
+      flex-direction: column-reverse;
+      padding:0px 30px;
+      align-items: center;
+      margin: 0px 10px;
+      justify-content: center;
+      font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }
+  .logincontainer p{
+    font-size: 10px;
+  }
+  .logimg{
+      width:300px;
+      height:200px;
+  }
+  label{
+    font-size: 10px;
+  }
+  .container {
+    margin: 50px 20px 20px 20px;
+    width: 300px;
+  }
+  input[type="text"],
+  input[type="password"]{
+    width: 100%;
+    height:15px;
+  }
+  button{
+    width: 100%;
+    height:30px;
+     text-align: center;
+     padding: 2px;
+  }
+ 
+  .Symbols img{
+    width:40px;
+    padding-bottom:5px;
+  }
+}
