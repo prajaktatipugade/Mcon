@@ -1,11 +1,57 @@
-import React from 'react';
+import React, { useState } from 'react';
+import {useNavigate} from "react-router-dom";
 import './Signup.css';
+const URL="http://localhost:5000/api/auth/register";
 
 export default function Signup() {
+    const[user, setUser]=useState({
+            username:" ",
+            email:" ",
+            phone:" ",
+            password:" ",
+    });
+
+    const navigate=useNavigate();
+    //handling input values
+    const handleInput=(e)=>{
+        console.log(e);
+        let name=e.target.name;
+        let value=e.target.value;
+       
+
+        setUser({
+            ... user,
+            [name]:value,
+        })
+    }
+    const handleSubmit=async (e)=>{
+        e.preventDefault();
+        console.log(user);
+        try{
+            const response=await fetch(URL,{
+                method: "POST",
+                headers:{
+                    "Content-Type":"application/json",
+                },
+                body:JSON.stringify(user),
+                
+            });
+            if(response.ok){
+              
+                setUser({username: " ", email:" ", phone:" ", password:" " });
+                navigate("/log");
+               
+            }
+            console.log(response);
+        }
+        catch(error){
+            console.log("register",error);
+        }
+};
     return (
         <div className='logincontainer'>
             <div>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className="container">
                     <h1>Sign Up</h1>
                     <p>Please fill in this form to create an account</p>
@@ -13,22 +59,20 @@ export default function Signup() {
                     <hr />
                     <div className='containerss'>
                         <div>
-                            <label htmlFor="email"><b>Username</b></label>
-                            <input type="text" placeholder="Enter Email" name="email" required />
+                            <label htmlFor="username"><b>Username</b></label>
+                            <input type="text" placeholder="Enter Email" name="username" required  value={user.username} onChange={handleInput}/>
                         </div>
                         <div>
-                            <label htmlFor="email"><b>Lastname</b></label>
-
-                            <input type="text" placeholder="Enter Email" name="email" required />
-
+                            <label htmlFor="email"><b>Phone no</b></label>
+                            <input type="text" placeholder="Enter Email" name="phone" required  value={user.phone} onChange={handleInput}/>
                         </div>
 
                     </div>
                     <label htmlFor="email"><b>Email</b></label>
-                    <input type="text" placeholder="Enter Email" name="email" required />
+                    <input type="text" placeholder="Enter Email" name="email" required  value={user.email} onChange={handleInput}/>
 
                     <label htmlFor="psw"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required />
+                    <input type="password" placeholder="Enter Password" name="password" required  value={user.password} onChange={handleInput}/>
                     <label htmlFor="psw-repeat"><b>Repeat Password</b></label>
                     <input type="password" placeholder="Repeat Password" name="psw-repeat" required />
                     <div className='Symbols'>

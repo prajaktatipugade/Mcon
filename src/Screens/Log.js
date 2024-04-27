@@ -1,11 +1,54 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Signup.css';
+import { useNavigate } from 'react-router-dom';
+const URL="http://localhost:5000/api/auth/login";
+
 
 export default function Log() {
+    const [user,setUser]=useState({
+        username:" ",
+        password:" "
+    });
+    const handleInput=(e)=>{
+        let value=e.target.value;
+        let name=e.target.name;
+        setUser({
+            ...user,
+            [name]:value
+        })
+    }
+    const navigate=useNavigate();
+
+    const handleSubmit=async (e)=>{
+        e.preventDefault();
+        console.log(user)
+        try{
+            const response=await fetch(URL,{
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json",
+                },
+                body:JSON.stringify(user),
+            });
+            if(response.ok){
+                alert("login successfully");
+                navigate(`/signup`);
+                setUser({email:"", password:"" });
+                
+            }else{
+                alert("invalid credentials");
+                console.log("invalid credentials");
+            }
+            console.log(response);
+        }catch(error){
+            console.log(error);
+        }
+    }
+
     return (
         <div className='logincontainer'>
             <div>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className="container">
                     <h1>Log in</h1>
                     <p>Log in to access huge community of doctors </p>
@@ -13,10 +56,10 @@ export default function Log() {
                     <hr />
                     
                     <label htmlFor="email"><b>Email</b></label>
-                    <input type="text" placeholder="Enter Email" name="email" required />
+                    <input type="text" placeholder="Enter Email" name="email" required  onChange={handleInput}/>
 
                     <label htmlFor="psw"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required />
+                    <input type="password" placeholder="Enter Password" name="password"  required onChange={handleInput} />
                    
                     <div className='Symbols'>
                                 <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDwtQG58WZKYxmonFcMBrO07YX8yR4zrEM5w&usqp=CAU' alt=''></img>

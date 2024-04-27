@@ -1,14 +1,23 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import './Screens/Log';
-import Signup from './Screens/Signup'
-
+import Log from './Screens/Log';
+import Signup from './Screens/Signup';
+import Cards from "./Component/Cards";
+import Home from "./Screens/Home";
 
 function App() {
   return (
-    <div className="App">
-      <Signup/>
+    <>
+    <BrowserRouter>
+             <Routes>
 
-    </div>
+                 <Route path="/home" element={<Home/>}/>
+
+
+             </Routes>
+    </BrowserRouter>
+    </>
   );
 }
 

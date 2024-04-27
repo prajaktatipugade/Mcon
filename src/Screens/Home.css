@@ -1,0 +1,30 @@
+
+body {
+    font-family: Arial, sans-serif;
+    color-scheme: light dark;
+    background-color:rgb(27, 27, 65)
+
+  }
+header h1{
+    color: var(--animation-color);    padding-top: 20px;
+    filter: drop-shadow(0 0 23px var(--animation-color))
+
+   }
+   .headding{
+    height:20px;
+    left:0px;
+    width:300px;
+    text-align:center;
+    color:orange;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif ;
+   
+    font-size: 30px;
+    padding: 20px 0px;
+  }
+  .hedinfo{
+    font-size:20px;
+    padding:20px 0px;
+    color:aliceblue ;
+    
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+  }
